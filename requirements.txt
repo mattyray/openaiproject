@@ -7,4 +7,6 @@ openai>=1.0.0
 environs[django]
 django-crispy-forms
 crispy-bootstrap5
+markdown
+
 

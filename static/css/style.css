@@ -49,7 +49,7 @@ body {
    Hero Section
 =========================== */
 .hero-section {
-    background: linear-gradient(to bottom, #e6f7ff, #b3e0ff);  /* Soft blue gradient */
+    background: linear-gradient(to bottom, #e6f7ff, #b3e0ff);
     color: #333;
     padding: 80px 0;
     border-radius: 10px;
@@ -145,7 +145,7 @@ form button:hover {
    Chat Interface
 =========================== */
 .chat-container {
-    max-width: 700px;  /* Reduced max width for better fit */
+    max-width: 700px;  /* Compact width for better fit */
     margin: 0 auto;
     padding: 20px;
     background: #ffffff;
@@ -156,7 +156,7 @@ form button:hover {
 
 .chat-box {
     background: #f0f8ff;
-    height: 400px;  /* Reduced height for better fit */
+    height: 400px;  /* Compact height */
     overflow-y: auto;
     padding: 15px;
     border-radius: 16px;
@@ -169,7 +169,7 @@ form button:hover {
     scrollbar-color: #007bff #f0f8ff;
 }
 
-/* Scrollbar Styling for Chrome */
+/* Scrollbar Styling (Chrome) */
 .chat-box::-webkit-scrollbar {
     width: 8px;
 }
@@ -189,12 +189,13 @@ form button:hover {
     border-radius: 20px;
     max-width: 70%;
     word-wrap: break-word;
-    line-height: 1.5;
+    line-height: 1.6;
     font-size: 0.95rem;
     display: inline-block;
     position: relative;
 }
 
+/* User Messages */
 .user-message {
     background: #007bff;
     color: white;
@@ -202,11 +203,50 @@ form button:hover {
     border-bottom-right-radius: 4px;
 }
 
+/* AI Messages with Rich Formatting */
 .ai-message {
     background: #e6f7ff;
     color: #333;
     align-self: flex-start;
     border-bottom-left-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Allow rich text formatting in AI messages */
+.ai-message h1, .ai-message h2, .ai-message h3 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.ai-message p {
+    margin-bottom: 10px;
+}
+
+.ai-message ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.ai-message ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.ai-message strong {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.ai-message a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.ai-message a:hover {
+    color: #0056b3;
+    text-decoration: none;
 }
 
 /* Chat Form */
@@ -229,6 +269,19 @@ form button:hover {
     font-weight: bold;
     font-size: 1rem;
     padding: 8px 0;
+}
+
+/* Clear Chat Button */
+.btn-danger {
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #dc3545;
+    color: white;
 }
 
 /* ===========================
@@ -264,7 +317,7 @@ footer a:hover {
     }
 
     .chat-box {
-        height: 350px;  /* Smaller height for mobile */
+        height: 350px;
     }
 
     .navbar-nav .nav-link {
