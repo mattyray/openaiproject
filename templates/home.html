@@ -1,15 +1,50 @@
+<!-- templates/pages/home.html -->
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-  <h1>This is our home page.</h1>
-  {% if user.is_authenticated %}
-    <p>Hi {{ user.email }}!</p>
-    <p><a href="{% url 'logout' %}">Log Out</a></p>
-  {% else %}
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Log In</a>
-    <a href="{% url 'signup' %}">Sign Up</a>
-  {% endif %}
+    <!-- Hero Section -->
+    <div class="text-center py-5" style="background: url('{% static 'images/hero-bg.jpg' %}') center/cover no-repeat; color: white;">
+        <h1 class="display-3 fw-bold">Your Personal AI Motivator</h1>
+        <p class="lead">Daily encouragement and support, inspired by real stories of resilience.</p>
+
+        {% if user.is_authenticated %}
+            <a href="#" class="btn btn-primary btn-lg mt-3">Start Chatting</a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-light mt-3">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg mt-3">Log In</a>
+            <a href="{% url 'signup' %}" class="btn btn-outline-light btn-lg mt-3">Sign Up</a>
+        {% endif %}
+    </div>
+
+    <!-- Features Section -->
+    <div class="container py-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h3 class="h4">🌱 Personalized Motivation</h3>
+                        <p>Receive daily encouragement tailored to your journey.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h3 class="h4">💬 Interactive Chat</h3>
+                        <p>Converse with an AI that understands and inspires you.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <h3 class="h4">📩 Daily Inspiration</h3>
+                        <p>Receive motivational messages in your inbox every morning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

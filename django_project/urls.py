@@ -1,12 +1,12 @@
+# django_project/urls.py
 from django.contrib import admin
+from django.contrib.auth.views import LogoutView
 from django.urls import path, include
 
 urlpatterns = [
-    # Django admin
     path("admin/", admin.site.urls),
-    # User management
+    path("accounts/logout/", LogoutView.as_view(), name="logout"),  # Keep it simple
     path("accounts/", include("django.contrib.auth.urls")),
-    # Local apps
-    path("accounts/", include("accounts.urls")),  # new
+    path("accounts/", include("accounts.urls")),
     path("", include("pages.urls")),
 ]

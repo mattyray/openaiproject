@@ -5,3 +5,6 @@ psycopg2-binary
 django-allauth
 openai
 environs[django]
+django-crispy-forms
+crispy-bootstrap5
+
