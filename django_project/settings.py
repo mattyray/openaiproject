@@ -21,10 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    #APPS
     'pages.apps.PagesConfig',
+    'chat.apps.ChatConfig',
 
     'crispy_forms',  # <-- Added
     'crispy_bootstrap5',  # <-- Added
+
+
 ]
 
 # Middleware
@@ -101,7 +105,10 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = "home"  # new
 # Redirect to homepage after logout
 # settings.py
-LOGOUT_REDIRECT_URL = "/accounts/login/"
+# settings.py
+LOGOUT_REDIRECT_URL = "/"  # Redirect to home page
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# settings.py
