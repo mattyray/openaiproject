@@ -3,7 +3,7 @@ Django==5.1.6
 sqlparse==0.5.3
 psycopg2-binary
 django-allauth
-openai
+openai>=1.0.0
 environs[django]
 django-crispy-forms
 crispy-bootstrap5

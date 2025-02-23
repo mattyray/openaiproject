@@ -8,5 +8,7 @@ urlpatterns = [
     path("accounts/logout/", custom_logout, name="logout"),  # Use custom_logout instead of LogoutView
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/", include("accounts.urls")),
+    path("chat/", include("chat.urls")),  # New line for chat
+
     path("", include("pages.urls")),
 ]

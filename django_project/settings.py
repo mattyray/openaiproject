@@ -1,11 +1,15 @@
 from pathlib import Path
 from environs import Env
+import openai
+
 
 # Initialize environs
 env = Env()
 env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+openai.api_key = env("OPENAI_API_KEY")
 
 # Security
 SECRET_KEY = env("DJANGO_SECRET_KEY")
