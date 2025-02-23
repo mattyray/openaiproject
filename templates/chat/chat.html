@@ -7,6 +7,7 @@
 <div class="container py-5 chat-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Chat with Your AI Motivator</h1>
+        <a href="{% url 'conversation_list' %}" class="btn btn-secondary">View Conversations</a>
         <a href="{% url 'clear_chat' %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to clear the chat history?');">Clear Chat</a>
     </div>
 

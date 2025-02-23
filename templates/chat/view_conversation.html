@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Conversation Details{% endblock title %}
+
+{% block content %}
+<h1>Conversation Details</h1>
+
+<div class="chat-box border rounded p-3 mb-4">
+    {% for message in messages %}
+        <div class="message {% if message.is_user %}user-message{% else %}ai-message{% endif %}">
+            {{ message.text|safe }}
+        </div>
+    {% endfor %}
+</div>
+
+<a href="{% url 'conversation_list' %}" class="btn btn-secondary">Back to Conversations</a>
+<a href="{% url 'chat' %}" class="btn btn-primary">Start a New Chat</a>
+{% endblock content %}
