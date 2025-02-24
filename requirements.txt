@@ -8,5 +8,6 @@ environs[django]
 django-crispy-forms
 crispy-bootstrap5
 markdown
+channels-redis
 
 
