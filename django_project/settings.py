@@ -14,7 +14,7 @@ openai.api_key = env("OPENAI_API_KEY")
 # Security
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost"])
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 # Installed Apps
 INSTALLED_APPS = [
@@ -118,12 +118,14 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # settings.py
-# Channels Layer using Redis
+# Channels
+ASGI_APPLICATION = "django_project.asgi.application"
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6379)],  # <-- Use "redis" as hostname since Docker uses service names
+            "hosts": [("redis", 6379)],  # <-- Ensure this matches Docker service name
         },
     },
 }

@@ -17,12 +17,11 @@
                 {% if message.is_user %}
                     {{ message.text }}
                 {% else %}
-                    {{ message.text|safe }}  <!-- Use 'safe' filter for AI messages -->
+                    {{ message.text|safe }}
                 {% endif %}
             </div>
         {% endfor %}
     </div>
-    
 
     <form method="post" class="chat-form">
         {% csrf_token %}
@@ -30,11 +29,53 @@
         <button type="submit" class="btn btn-primary w-100">Send</button>
     </form>
 
+    <!-- ✅ JavaScript for Real-Time WebSocket Chat -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const conversationId = "{{ conversation.id|default:'default_room' }}";
 
+            // WebSocket connection using correct protocol
+            const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+            const chatSocket = new WebSocket(
+                `${protocol}${window.location.host}/ws/chat/${conversationId}/`
+            );
 
-<script>
-    // Auto-scroll to latest message
-    var chatMessages = document.getElementById("chatMessages");
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-</script>
+            chatSocket.onmessage = function (e) {
+                const data = JSON.parse(e.data);
+                const chatMessages = document.getElementById('chatMessages');
+
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', data.is_user ? 'user-message' : 'ai-message');
+                messageDiv.innerHTML = data.text;
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+
+            chatSocket.onclose = function (e) {
+                console.error(`WebSocket closed unexpectedly: ${e.code} - ${e.reason}`);
+            };
+
+            chatSocket.onerror = function (e) {
+                console.error('WebSocket error:', e);
+            };
+
+            const chatForm = document.querySelector('.chat-form');
+            chatForm.onsubmit = function (e) {
+                e.preventDefault();
+
+                const messageInput = document.querySelector('#id_text');
+                const message = messageInput.value.trim();
+
+                if (message) {
+                    chatSocket.send(JSON.stringify({ text: message }));
+                    messageInput.value = '';
+                }
+            };
+
+            const chatMessages = document.getElementById("chatMessages");
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+    </script>
+</div>
 {% endblock content %}
