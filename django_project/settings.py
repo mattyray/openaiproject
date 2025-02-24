@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'crispy_forms',  # <-- Added
     'crispy_bootstrap5',  # <-- Added
 
+    'channels',  # <-- Add this
+
 
 ]
 
@@ -116,3 +118,12 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # settings.py
+# Channels Layer using Redis
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],  # <-- Use "redis" as hostname since Docker uses service names
+        },
+    },
+}
