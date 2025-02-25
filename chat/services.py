@@ -21,7 +21,7 @@ def get_motivational_response(prompt):
                 {"role": "user", "content": prompt}
             ],
             temperature=0.8,
-            max_tokens=300
+            max_tokens=1200
         )
 
         # ✅ Convert Markdown to HTML (safe for rendering)
